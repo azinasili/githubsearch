@@ -5,24 +5,19 @@ import Profile from './components/profile/Profile';
 import './App.css';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {};
-    this.getUser = this.getUser.bind(this);
     this.searchUser = this.searchUser.bind(this);
     this.setUser = this.setUser.bind(this);
-  }
-
-  searchUser(event) {
-    event.preventDefault();
-    console.log(this.state);
   }
 
   setUser(event) {
     this.setState({user: event.target.value});
   }
 
-  getUser() {
+  searchUser(event) {
+    event.preventDefault();
     axios.get(`https://api.github.com/users/${this.state.user}`)
       .then((response) => {
         console.log(response.data);
@@ -46,7 +41,6 @@ class App extends Component {
     return (
       <div className="App">
         <Search searchUser={this.searchUser} setUser={this.setUser} />
-        <button onClick={this.getUser}>get profile</button>
         <Profile profile={this.state} />
       </div>
     );
