@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class Profile extends Component {
   render() {
-    console.log(this.props);
     return (
       <div className="Profile">
         <img src={this.props.profile.avatar} alt="Github profile avatar" />
