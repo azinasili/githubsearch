@@ -45,7 +45,7 @@ class App extends Component {
 
   searchRepos() {
     this.ajaxRequest({
-      string: `https://api.github.com/search/repositories?q=${this.state.searchString}`,
+      string: `https://api.github.com/search/repositories?q=${this.state.searchString}&sort=stars`,
       state: `repoData`,
     });
   }
