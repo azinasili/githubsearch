@@ -8,20 +8,16 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      user: '',
+      searchString: '',
       userData: [],
     };
-    this.searchUser = this.searchUser.bind(this);
-    this.setUser = this.setUser.bind(this);
+    this.getSearchResults = this.getSearchResults.bind(this);
+    this.getSearchString = this.getSearchString.bind(this);
+    this.searchUsers = this.searchUsers.bind(this);
   }
 
-  setUser(event) {
-    this.setState({user: event.target.value});
-  }
-
-  searchUser(event) {
-    event.preventDefault();
-    axios.get(`https://api.github.com/users/${this.state.user}`)
+  searchUsers() {
+    axios.get(`https://api.github.com/users/${this.state.searchString}`)
       .then((response) => {
         console.log(response.data);
         this.setState({userData: response.data});
@@ -31,10 +27,19 @@ class App extends Component {
       });
   }
 
+  getSearchString(event) {
+    this.setState({searchString: event.target.value});
+  }
+
+  getSearchResults(event) {
+    event.preventDefault();
+    this.searchUsers();
+  }
+
   render() {
     return (
       <div className="App">
-        <Search searchUser={this.searchUser} setUser={this.setUser} />
+        <Search getSearchResults={this.getSearchResults} getSearchString={this.getSearchString} />
         <Profile profile={this.state.userData} />
       </div>
     );
