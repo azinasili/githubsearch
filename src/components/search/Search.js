@@ -8,7 +8,7 @@ class Search extends Component {
         <div className="Input-group">
           <p className="Input-field">
             <label className="Input-label sr-only" htmlFor="profileSearch">Profile Search</label>
-            <input type="text" id="profileSearch" name="profileSearch" className="Input" placeholder="Profile Search" onChange={this.props.setUser}  />
+            <input type="text" id="profileSearch" name="profileSearch" className="Input" placeholder="Profile Search" onChange={this.props.setUser} />
           </p>
           <button className="Input-button">Search</button>
         </div>
