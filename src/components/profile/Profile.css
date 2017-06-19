@@ -1,0 +1,39 @@
+/**
+ * Profile styles inspired by Dribble shots
+ * User Profile Widget: https://dribbble.com/shots/1790784-User-Profile-Widget
+ * Browse Profiles: https://dribbble.com/shots/2622997-Browse-profiles
+ */
+.Profile {
+  /*display: flex;
+  flex-wrap: wrap;*/
+  position: relative;
+  text-align: center;
+}
+
+.Profile-image {
+  border-radius: 50%;
+  display: block;
+  height: 8em;
+  margin: auto;
+  width: 8em;
+}
+
+.Profile-meta {
+  display: flex;
+  justify-content: center;
+}
+
+.Profile-meta-item {
+  margin: 0;
+  padding-left: 2.25em;
+  padding-right: 2.25em;
+}
+
+.Profile-meta-item:not(:last-child) {
+  border-right: 1px solid;
+}
+
+.Profile-meta-title,
+.Profile-meta-value {
+  display: block;
+}
