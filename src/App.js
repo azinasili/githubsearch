@@ -10,21 +10,44 @@ class App extends Component {
     this.state = {
       searchString: '',
       userData: [],
+      repoData: [],
     };
+    this.ajaxRequest = this.ajaxRequest.bind(this);
     this.getSearchResults = this.getSearchResults.bind(this);
     this.getSearchString = this.getSearchString.bind(this);
     this.searchUsers = this.searchUsers.bind(this);
+    this.searchRepos = this.searchRepos.bind(this);
   }
 
-  searchUsers() {
-    axios.get(`https://api.github.com/users/${this.state.searchString}`)
+  ajaxRequest(options = {}) {
+    const defaults = {
+      string: '',
+      state: '',
+      ...options
+    };
+
+    axios.get(defaults.string)
       .then((response) => {
         console.log(response.data);
-        this.setState({userData: response.data});
+        this.setState({[defaults.state]: response.data});
       })
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  searchUsers() {
+    this.ajaxRequest({
+      string: `https://api.github.com/users/${this.state.searchString}`,
+      state: `userData`,
+    });
+  }
+
+  searchRepos() {
+    this.ajaxRequest({
+      string: `https://api.github.com/search/repositories?q=${this.state.searchString}`,
+      state: `repoData`,
+    });
   }
 
   getSearchString(event) {
@@ -34,6 +57,7 @@ class App extends Component {
   getSearchResults(event) {
     event.preventDefault();
     this.searchUsers();
+    this.searchRepos();
   }
 
   render() {
