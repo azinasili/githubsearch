@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Search from './components/search/Search';
 import Profile from './components/profile/Profile';
+import Repos from './components/repos/Repos';
 import './App.css';
 
 class App extends Component {
@@ -65,6 +66,7 @@ class App extends Component {
       <div className="App">
         <Search getSearchResults={this.getSearchResults} getSearchString={this.getSearchString} />
         <Profile profile={this.state.userData} />
+        <Repos repos={this.state.repoData} />
       </div>
     );
   }
