@@ -1,5 +1,6 @@
 .App {
   display: grid;
+  grid-gap: 2em;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: minmax(1em, auto) 1fr;
   position: relative;
