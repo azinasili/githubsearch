@@ -1,9 +1,45 @@
-.Input-group {
+.Search {
+  align-items: center;
+  background-color: rgba(255, 255, 255, .35);
+  box-shadow: 0 .1em .3em 0 rgba(0, 0, 0, .25);
   display: flex;
+  grid-column: span 2;
+  justify-content: center;
+  padding: 1em;
+}
+
+.Input-group {
+  border: 0.125em solid #0396ff;
+  border-radius: 50em;
+  display: flex;
+  width: 25%;
 }
 
 .Input-field {
+  border-radius: inherit;
+  flex-grow: 1;
   margin: 0;
+}
+
+.Input,
+.Input-button {
+  border: 0;
+  padding: .5em 1em;
+  font-size: inherit;
+}
+
+.Input {
+  border-bottom-left-radius: inherit;
+  border-top-left-radius: inherit;
+  width: 100%;
+}
+
+.Input-button {
+  background-color: #0396ff;
+  border-bottom-right-radius: inherit;
+  border-top-right-radius: inherit;
+  color: #fff;
+  cursor: pointer;
 }
 
 .sr-only {
