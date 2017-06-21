@@ -23,17 +23,17 @@ class Users extends Component {
       userList = this.state.users.splice(0, this.state.returnLength);
       users = userList.map((user) => {
         return (
-          <li key={user.id}>
-            <img src={user.avatar_url} alt="Github profile avatar" className="Profile-image" />
-            <p>{user.login}</p>
+          <li key={user.id} className="User">
+            <img src={user.avatar_url} alt="Github profile avatar" className="User-avatar" />
+            <p className="User-name">{user.login}</p>
           </li>
         );
       });
     }
 
     return (
-      <div className="Profile">
-        <ul>{users}</ul>
+      <div className="Users">
+        <ul className="User-list">{users}</ul>
       </div>
     );
   }
