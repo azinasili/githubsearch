@@ -6,6 +6,7 @@ class Repos extends Component {
     super(props);
     this.state = {
       repos: [],
+      returnLength: 10,
     }
   }
 
@@ -19,7 +20,7 @@ class Repos extends Component {
     let repos;
     let repoList;
     if (this.state.repos !== undefined && this.state.repos.length > 0) {
-      repoList = this.state.repos.splice(0, 10);
+      repoList = this.state.repos.splice(0, this.state.returnLength);
       repos = repoList.map((repo) => {
         return <li key={repo.id}>{repo.name}</li>
       });
