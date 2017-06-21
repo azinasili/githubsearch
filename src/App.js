@@ -22,12 +22,12 @@ class App extends Component {
 
   ajaxRequest(options = {}) {
     const defaults = {
-      string: '',
+      url: '',
       state: '',
       ...options
     };
 
-    axios.get(defaults.string)
+    axios.get(defaults.url)
       .then((response) => {
         console.log(response.data);
         this.setState({[defaults.state]: response.data});
@@ -39,14 +39,14 @@ class App extends Component {
 
   searchUsers() {
     this.ajaxRequest({
-      string: `https://api.github.com/users/${this.state.searchString}`,
+      url: `https://api.github.com/users/${this.state.searchString}`,
       state: `userData`,
     });
   }
 
   searchRepos() {
     this.ajaxRequest({
-      string: `https://api.github.com/search/repositories?q=${this.state.searchString}&sort=stars`,
+      url: `https://api.github.com/search/repositories?q=${this.state.searchString}&sort=stars`,
       state: `repoData`,
     });
   }
