@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Search from './components/search/Search';
-import Profile from './components/profile/Profile';
+import Users from './components/users/Users';
 import Repos from './components/repos/Repos';
 import './App.css';
 
@@ -39,7 +39,7 @@ class App extends Component {
 
   searchUsers() {
     this.ajaxRequest({
-      url: `https://api.github.com/users/${this.state.searchString}`,
+      url: `https://api.github.com/search/users?q=${this.state.searchString}`,
       state: `userData`,
     });
   }
@@ -65,7 +65,7 @@ class App extends Component {
     return (
       <div className="App">
         <Search getSearchResults={this.getSearchResults} getSearchString={this.getSearchString} />
-        <Profile profile={this.state.userData} />
+        <Users users={this.state.userData} />
         <Repos repos={this.state.repoData} />
       </div>
     );
