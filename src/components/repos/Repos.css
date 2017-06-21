@@ -1,3 +1,50 @@
 .Repos {
+  background-color: rgba(255, 255, 255, .15);
+  border-radius: .3em;
+  margin-right: 2em;
   position: relative;
+}
+
+.Repos-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.Repo {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  position: relative;
+}
+
+.Repo:not(:last-child) {
+  border-bottom: 1px solid;
+}
+
+.Repo-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Repo-stats {
+  display: flex;
+  /*position: absolute;*/
+  /*top: .5em;
+  right: .5em;*/
+}
+
+.Repo-stat {
+  font-size: .875em;
+}
+
+.Repo-stat:not(:last-child) {
+  margin-right: 1em;
+}
+
+.Repo-stat-icon {
+  font-size: inherit;
+  margin-right: .25em;
+  vertical-align: text-top;
 }

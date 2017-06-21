@@ -23,13 +23,26 @@ class Repos extends Component {
       repoList = this.state.repos.splice(0, this.state.returnLength);
       repos = repoList.map((repo) => {
         return (
-          <li key={repo.id}>
-            <p>{repo.full_name}</p>
+          <li key={repo.id} className="Repo">
+            <div className="Repo-header">
+              <p>{repo.full_name}</p>
+              <div className="Repo-stats">
+                <p className="Repo-stat">
+                  <i className="Repo-stat-icon material-icons">star</i>
+                  <span className="Repo-stat-value">{repo.stargazers_count}</span>
+                </p>
+                <p className="Repo-stat">
+                  <i className="Repo-stat-icon material-icons">content_copy</i>
+                  <span className="Repo-stat-value">{repo.forks}</span>
+                </p>
+                <p className="Repo-stat">
+                  <i className="Repo-stat-icon material-icons">remove_red_eye</i>
+                  <span className="Repo-stat-value">{repo.watchers}</span>
+                </p>
+              </div>
+            </div>
             <p>{repo.description}</p>
-            <p>{repo.language}</p>
-            <p>stars: {repo.stargazers_count}</p>
-            <p>forks: {repo.forks}</p>
-            <p>watchers: {repo.watchers}</p>
+            <p>Language: <span>{repo.language}</span></p>
           </li>
         );
       });
@@ -37,7 +50,7 @@ class Repos extends Component {
 
     return (
       <div className="Repos">
-        <ul>{repos}</ul>
+        <ul className="Repos-list">{repos}</ul>
       </div>
     );
   }
