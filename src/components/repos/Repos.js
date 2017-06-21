@@ -22,7 +22,16 @@ class Repos extends Component {
     if (this.state.repos !== undefined && this.state.repos.length > 0) {
       repoList = this.state.repos.splice(0, this.state.returnLength);
       repos = repoList.map((repo) => {
-        return <li key={repo.id}>{repo.name}</li>
+        return (
+          <li key={repo.id}>
+            <p>{repo.full_name}</p>
+            <p>{repo.description}</p>
+            <p>{repo.language}</p>
+            <p>stars: {repo.stargazers_count}</p>
+            <p>forks: {repo.forks}</p>
+            <p>watchers: {repo.watchers}</p>
+          </li>
+        );
       });
     }
 
