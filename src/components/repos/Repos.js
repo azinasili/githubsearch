@@ -25,7 +25,7 @@ class Repos extends Component {
         return (
           <li key={repo.id} className="Repo">
             <div className="Repo-header">
-              <p>{repo.full_name}</p>
+              <p className="Repo-title">{repo.full_name}</p>
               <div className="Repo-stats">
                 <p className="Repo-stat">
                   <i className="Repo-stat-icon material-icons">star</i>
@@ -41,8 +41,8 @@ class Repos extends Component {
                 </p>
               </div>
             </div>
-            <p>{repo.description}</p>
-            <p>Language: <span>{repo.language}</span></p>
+            <p className="Repo-description">{repo.description}</p>
+            {repo.language ? <p className="Repo-languages">Language: <span>{repo.language}</span></p> : ''}
           </li>
         );
       });
