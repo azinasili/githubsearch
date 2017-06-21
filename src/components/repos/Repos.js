@@ -16,8 +16,18 @@ class Repos extends Component {
   }
 
   render() {
+    let repos;
+    let repoList;
+    if (this.state.repos !== undefined && this.state.repos.length > 0) {
+      repoList = this.state.repos.splice(0, 10);
+      repos = repoList.map((repo) => {
+        return <li key={repo.id}>{repo.name}</li>
+      });
+    }
+
     return (
       <div className="Repos">
+        <ul>{repos}</ul>
       </div>
     );
   }
