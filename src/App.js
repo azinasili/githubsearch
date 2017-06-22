@@ -16,8 +16,6 @@ class App extends Component {
     this.ajaxRequest = this.ajaxRequest.bind(this);
     this.getSearchResults = this.getSearchResults.bind(this);
     this.getSearchString = this.getSearchString.bind(this);
-    this.searchUsers = this.searchUsers.bind(this);
-    this.searchRepos = this.searchRepos.bind(this);
   }
 
   ajaxRequest(options = {}) {
@@ -37,28 +35,20 @@ class App extends Component {
       });
   }
 
-  searchUsers(searchString, dataName) {
-    this.ajaxRequest({
-      url: `https://api.github.com/search/users?q=${searchString}`,
-      state: `${dataName}`,
-    });
-  }
-
-  searchRepos(searchString, dataName) {
-    this.ajaxRequest({
-      url: `https://api.github.com/search/repositories?q=${searchString}&sort=stars`,
-      state: `${dataName}`,
-    });
-  }
-
   getSearchString(input) {
     this.setState({searchString: input});
   }
 
   getSearchResults(event) {
     event.preventDefault();
-    this.searchUsers(this.state.searchString, `userData`);
-    this.searchRepos(this.state.searchString, `repoData`);
+    this.ajaxRequest({
+      url: `https://api.github.com/search/users?q=${this.state.searchString}`,
+      state: `userData`,
+    });
+    this.ajaxRequest({
+      url: `https://api.github.com/search/repositories?q=${this.state.searchString}`,
+      state: `repoData`,
+    });
     this.setState({searchString: ''});
   }
 
