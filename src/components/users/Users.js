@@ -10,10 +10,6 @@ class Users extends Component {
     }
   }
 
-  // componentWillMount(){
-  //   this.setState({users: this.props.users.items})
-  // }
-
   componentWillReceiveProps(nextProps) {
     if (this.state.users !== nextProps.users.items) {
       this.setState({users: nextProps.users.items});
