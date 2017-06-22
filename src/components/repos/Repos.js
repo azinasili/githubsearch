@@ -10,9 +10,9 @@ class Repos extends Component {
     }
   }
 
-  componentWillMount(){
-    this.setState({repos: this.props.repos.items})
-  }
+  // componentWillMount(){
+  //   this.setState({repos: this.props.repos.items})
+  // }
 
   componentWillReceiveProps(nextProps) {
     if (this.state.repos !== nextProps.repos.items) {
