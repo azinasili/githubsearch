@@ -50,6 +50,7 @@ class Repos extends Component {
 
     return (
       <div className="Repos">
+        <h2 className="Repos-title">Top {returnLength} Repositories</h2>
         <ul className="Repos-list">{repos}</ul>
       </div>
     );

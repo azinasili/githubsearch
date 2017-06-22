@@ -33,6 +33,7 @@ class Users extends Component {
 
     return (
       <div className="Users">
+        <h2 className="Users-title">Top {returnLength} Users</h2>
         <ul className="User-list">{users}</ul>
       </div>
     );
