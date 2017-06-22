@@ -62,11 +62,21 @@ class App extends Component {
   }
 
   render() {
+    let users;
+    let repos;
+    if (Object.keys(this.state.userData).length > 0) {
+      users = <Users users={this.state.userData} />;
+    }
+
+    if (Object.keys(this.state.repoData).length > 0) {
+      repos = <Repos repos={this.state.repoData} />;
+    }
+
     return (
       <div className="App">
         <Search getSearchResults={this.getSearchResults} getSearchString={this.getSearchString} />
-        <Users users={this.state.userData} />
-        <Repos repos={this.state.repoData} />
+        {users}
+        {repos}
       </div>
     );
   }
