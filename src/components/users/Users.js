@@ -10,6 +10,10 @@ class Users extends Component {
     }
   }
 
+  componentWillMount(){
+    this.setState({users: this.props.users.items})
+  }
+
   componentWillReceiveProps(nextProps) {
     if (this.state.users !== nextProps.users.items) {
       this.setState({users: nextProps.users.items});
@@ -20,7 +24,7 @@ class Users extends Component {
     let users;
     let userList;
     if (this.state.users !== undefined && this.state.users.length > 0) {
-      userList = this.state.users.splice(0, this.state.returnLength);
+      userList = this.state.users.slice(0, this.state.returnLength);
       users = userList.map((user) => {
         return (
           <li key={user.id} className="User">

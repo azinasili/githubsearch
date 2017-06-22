@@ -10,6 +10,10 @@ class Repos extends Component {
     }
   }
 
+  componentWillMount(){
+    this.setState({repos: this.props.repos.items})
+  }
+
   componentWillReceiveProps(nextProps) {
     if (this.state.repos !== nextProps.repos.items) {
       this.setState({repos: nextProps.repos.items});
@@ -20,7 +24,7 @@ class Repos extends Component {
     let repos;
     let repoList;
     if (this.state.repos !== undefined && this.state.repos.length > 0) {
-      repoList = this.state.repos.splice(0, this.state.returnLength);
+      repoList = this.state.repos.slice(0, this.state.returnLength);
       repos = repoList.map((repo) => {
         return (
           <li key={repo.id} className="Repo">

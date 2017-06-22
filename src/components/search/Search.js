@@ -14,7 +14,8 @@ class Search extends Component {
               name="profileSearch"
               className="Input"
               placeholder="Search GitHub"
-              onBlur={(event) => this.props.getSearchString(event.target.value)} />
+              value={this.props.searchString}
+              onChange={(event) => this.props.getSearchString(event.target.value)} />
           </p>
           <input type="submit" value="Search" className="Input-button" />
         </div>
