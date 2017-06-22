@@ -1,7 +1,6 @@
 .Repos {
   background-color: rgba(255, 255, 255, .15);
-  border-radius: .3em;
-  margin-right: 2em;
+  margin-right: 4em;
   position: relative;
 }
 
@@ -13,14 +12,20 @@
 }
 
 .Repo {
+  border-radius: .3em;
   display: flex;
   flex-direction: column;
-  padding: 1em;
+  padding: 1em 2em;
   position: relative;
 }
 
 .Repo:not(:last-child) {
-  border-bottom: 1px solid;
+  margin-bottom: 3em;
+}
+
+.Repo:hover,
+.Repo:focus {
+  background: linear-gradient(135deg, transparent 0%, rgba(171, 220, 255, .55) 180%);
 }
 
 .Repo-header {
@@ -60,7 +65,6 @@
 }
 
 .Repo-languages {
-  background: rgba(255, 255, 255, .15);
   border-radius: .3em;
   font-size: .875em;
   padding: .25em;
