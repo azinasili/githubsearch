@@ -37,44 +37,48 @@ class App extends Component {
       });
   }
 
-  searchUsers() {
+  searchUsers(searchString, dataName) {
     this.ajaxRequest({
-      url: `https://api.github.com/search/users?q=${this.state.searchString}`,
-      state: `userData`,
+      url: `https://api.github.com/search/users?q=${searchString}`,
+      state: `${dataName}`,
     });
   }
 
-  searchRepos() {
+  searchRepos(searchString, dataName) {
     this.ajaxRequest({
-      url: `https://api.github.com/search/repositories?q=${this.state.searchString}&sort=stars`,
-      state: `repoData`,
+      url: `https://api.github.com/search/repositories?q=${searchString}&sort=stars`,
+      state: `${dataName}`,
     });
   }
 
-  getSearchString(event) {
-    this.setState({searchString: event.target.value});
+  getSearchString(input) {
+    this.setState({searchString: input});
   }
 
   getSearchResults(event) {
     event.preventDefault();
-    this.searchUsers();
-    this.searchRepos();
+    this.searchUsers(this.state.searchString, `userData`);
+    this.searchRepos(this.state.searchString, `repoData`);
+    this.setState({searchString: ''});
   }
 
   render() {
     let users;
-    let repos;
     if (Object.keys(this.state.userData).length > 0) {
       users = <Users users={this.state.userData} />;
     }
 
+    let repos;
     if (Object.keys(this.state.repoData).length > 0) {
       repos = <Repos repos={this.state.repoData} />;
     }
 
     return (
       <div className="App">
-        <Search getSearchResults={this.getSearchResults} getSearchString={this.getSearchString} />
+        <Search
+          searchString={this.state.searchString}
+          getSearchString={this.getSearchString}
+          getSearchResults={this.getSearchResults} />
         {users}
         {repos}
       </div>

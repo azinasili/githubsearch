@@ -8,9 +8,16 @@ class Search extends Component {
         <div className="Input-group">
           <p className="Input-field">
             <label className="Input-label sr-only" htmlFor="profileSearch">Profile Search</label>
-            <input type="text" id="profileSearch" name="profileSearch" className="Input" placeholder="Search GitHub" onChange={this.props.getSearchString} />
+            <input
+              type="text"
+              id="profileSearch"
+              name="profileSearch"
+              className="Input"
+              placeholder="Search GitHub"
+              value={this.props.searchString}
+              onChange={(event) => this.props.getSearchString(event.target.value)} />
           </p>
-          <button className="Input-button">Search</button>
+          <input type="submit" value="Search" className="Input-button" />
         </div>
       </form>
     );
