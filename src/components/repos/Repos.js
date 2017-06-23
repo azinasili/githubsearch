@@ -25,7 +25,7 @@ class Repos extends Component {
         return (
           <li key={repo.id} className="Repo">
             <div className="Repo-header">
-              <p className="Repo-title">{repo.full_name}</p>
+              <a href={repo.html_url} className="Repo-title">{repo.full_name}</a>
               <div className="Repo-stats">
                 <p className="Repo-stat">
                   <i className="Repo-stat-icon material-icons">star</i>

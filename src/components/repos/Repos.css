@@ -38,9 +38,15 @@
 }
 
 .Repo-title {
+  color: rgb(3, 150, 255);
   font-size: 1.25em;
   font-weight: 700;
-  margin: 0;
+  text-decoration: none;
+}
+
+.Repo-title:hover,
+.Repo-title:focus {
+  text-decoration: underline;
 }
 
 .Repo-stats {
@@ -69,5 +75,4 @@
 .Repo-languages {
   border-radius: .3em;
   font-size: .875em;
-  padding: .25em;
 }
