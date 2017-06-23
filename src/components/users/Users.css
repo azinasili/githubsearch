@@ -9,8 +9,9 @@
 }
 
 .User-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 22%);
+  justify-content: space-between;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -18,17 +19,23 @@
 
 .User {
   align-items: center;
+  border: .0625em solid rgba(0, 0, 0, .1);
   border-radius: .3em;
   display: flex;
   flex: 0 1 25%;
   flex-direction: column;
-  margin-bottom: 3em;
+  /*
+    16% seems to be a magic number.
+    Using a percentage scales with the variable gap size
+  */
+  margin-bottom: 16%;
   padding: 1em 2em;
 }
 
 .User:hover,
 .User:focus {
   background: linear-gradient(135deg, transparent 0%, rgba(171, 220, 255, .55) 180%);
+  border-color: rgba(83, 103, 117, .1);
 }
 
 .User-avatar {
