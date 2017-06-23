@@ -10,6 +10,7 @@
 
 .User-list {
   display: grid;
+  font-size: .875em;
   grid-template-columns: repeat(4, 22%);
   justify-content: space-between;
   list-style: none;
@@ -18,24 +19,37 @@
 }
 
 .User {
-  align-items: center;
   border: .0625em solid rgba(0, 0, 0, .1);
   border-radius: .3em;
   display: flex;
-  flex: 0 1 25%;
-  flex-direction: column;
   /*
     16% seems to be a magic number.
     Using a percentage scales with the variable gap size
   */
   margin-bottom: 16%;
-  padding: 1em 2em;
 }
 
 .User:hover,
 .User:focus {
   background: linear-gradient(135deg, transparent 0%, rgba(171, 220, 255, .55) 180%);
   border-color: rgba(83, 103, 117, .1);
+}
+
+.User-link {
+  align-items: center;
+  color: rgb(3, 150, 255);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  font-size: 1.25em;
+  font-weight: 700;
+  padding: 1em .5em;
+  text-decoration: none;
+}
+
+.User-link:hover,
+.User-link:focus {
+  text-decoration: underline;
 }
 
 .User-avatar {
@@ -47,5 +61,9 @@
 }
 
 .User-name {
+  hyphens: auto;
   margin: 0;
+  overflow-wrap: break-word;
+  text-align: center;
+  word-wrap: break-word;
 }

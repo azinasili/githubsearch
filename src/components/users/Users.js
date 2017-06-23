@@ -24,8 +24,10 @@ class Users extends Component {
       users = userList.map((user) => {
         return (
           <li key={user.id} className="User">
-            <img src={user.avatar_url} alt="Github profile avatar" className="User-avatar" />
-            <p className="User-name">{user.login}</p>
+            <a href={user.html_url} className="User-link">
+              <img src={user.avatar_url} alt="Github profile avatar" className="User-avatar" />
+              <p className="User-name">{user.login}</p>
+            </a>
           </li>
         );
       });
