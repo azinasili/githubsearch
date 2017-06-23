@@ -1,6 +1,6 @@
 .Search {
   align-items: center;
-  background-image: linear-gradient(135deg, rgba(171, 220, 255, .55) 0%, rgba(3, 150, 255, .55) 100%);
+  background-image: linear-gradient(135deg, rgb(171, 220, 255) 0%, rgba(3, 150, 255, .85) 100%);
   display: flex;
   grid-column: span 2;
   justify-content: center;
@@ -10,6 +10,7 @@
 .Input-group {
   border: 0.125em solid #0396ff;
   border-radius: 50em;
+  box-shadow: 0 0 0 .25em rgba(255, 255, 255, 1);
   display: flex;
   width: 25%;
 }
