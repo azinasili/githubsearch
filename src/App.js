@@ -54,11 +54,11 @@ class App extends Component {
 
   render() {
     let users;
+    let repos;
     if (Object.keys(this.state.userData).length > 0) {
       users = <Users users={this.state.userData} />;
     }
 
-    let repos;
     if (Object.keys(this.state.repoData).length > 0) {
       repos = <Repos repos={this.state.repoData} />;
     }
