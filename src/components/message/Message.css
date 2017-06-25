@@ -1,0 +1,7 @@
+.Message {
+  align-items: center;
+  display: flex;
+  grid-column: span 2;
+  justify-content: center;
+  font-size: 1.25em;
+}
