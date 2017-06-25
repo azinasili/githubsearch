@@ -41,12 +41,14 @@ class App extends Component {
 
   getSearchResults(event) {
     event.preventDefault();
+    const SEARCH_STRING = this.state.searchString.replace(/\s/g,'');
+
     this.ajaxRequest({
-      url: `https://api.github.com/search/users?q=${this.state.searchString}`,
+      url: `https://api.github.com/search/users?q=${SEARCH_STRING}`,
       state: `userData`,
     });
     this.ajaxRequest({
-      url: `https://api.github.com/search/repositories?q=${this.state.searchString}`,
+      url: `https://api.github.com/search/repositories?q=${SEARCH_STRING}`,
       state: `repoData`,
     });
     this.setState({searchString: ''});
