@@ -1,11 +1,13 @@
 .App {
   display: grid;
+  height: 100%;
   grid-gap: 2em;
   grid-template-areas:
     'search'
     'users'
     'repos';
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
   padding-bottom: 2em;
   position: relative;
 }
