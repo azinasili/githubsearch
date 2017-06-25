@@ -1,7 +1,20 @@
 .App {
   display: grid;
-  grid-gap: 4em;
+  grid-gap: 2em;
+  grid-template-areas:
+    'search'
+    'users'
+    'repos';
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: minmax(1em, auto) 1fr;
+  padding-bottom: 2em;
   position: relative;
+}
+
+@media(min-width: 961px) {
+  .App {
+    grid-gap: 4em;
+    grid-template-areas:
+      'search search'
+      'users repos';
+  }
 }
