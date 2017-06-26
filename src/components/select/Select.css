@@ -1,0 +1,10 @@
+
+.Select {
+  align-items: center;
+  display: flex;
+}
+
+.Select-label {
+  display: inline-block;
+  margin-right: .25em;
+}
