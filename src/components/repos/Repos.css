@@ -17,6 +17,12 @@
   }
 }
 
+.Repos-header {
+  align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+}
+
 .Repos-list {
   font-size: .875em;
   list-style: none;

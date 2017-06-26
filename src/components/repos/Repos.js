@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Select from '../select/Select.js';
 import './Repos.css';
 
 class Repos extends Component {
@@ -6,8 +7,9 @@ class Repos extends Component {
     super(props);
     this.state = {
       repos: [],
-      returnLength: 10,
+      selectValue: 10,
     }
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -16,11 +18,15 @@ class Repos extends Component {
     }
   }
 
+  handleSelect(event) {
+    this.setState({selectValue: event.target.value});
+  }
+
   render() {
     let repos;
     let repoList;
     if (this.state.repos !== undefined && this.state.repos.length > 0) {
-      repoList = this.state.repos.slice(0, this.state.returnLength);
+      repoList = this.state.repos.slice(0, this.state.selectValue);
       repos = repoList.map((repo) => {
         return (
           <li key={repo.id} className="Repo">
@@ -50,7 +56,12 @@ class Repos extends Component {
 
     return (
       <div className="Repos">
-        <h2 className="Repos-title">Top {this.state.returnLength} Repositories</h2>
+        <div className="Repos-header">
+          <h2 className="Repos-title">Top {this.state.selectValue} Repositories</h2>
+          <form className="Repos-switcher">
+            <Select selectValue={this.state.selectValue} handleSelect={this.handleSelect} />
+          </form>
+        </div>
         <ul className="Repos-list">{repos}</ul>
       </div>
     );

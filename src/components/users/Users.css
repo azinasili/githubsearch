@@ -21,6 +21,12 @@
   }
 }
 
+.Users-header {
+  align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+}
+
 .User-list {
   display: grid;
   font-size: .875em;
