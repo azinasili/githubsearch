@@ -2,13 +2,16 @@
   "name": "githubsearch",
   "version": "0.1.0",
   "description": "GitHub Serach built using React.",
+  "homepage": "https://azinasili.github.io/githubsearch",
   "author": "hello@azinasili.com",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "deploy": "gh-pages -d build",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build"
   },
   "dependencies": {
     "axios": "^0.16.2",
@@ -16,6 +19,7 @@
     "react-dom": "^15.6.0"
   },
   "devDependencies": {
+    "gh-pages": "^1.0.0",
     "react-scripts": "1.0.7"
   }
 }
