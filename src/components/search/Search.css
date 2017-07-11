@@ -2,9 +2,14 @@
   align-items: center;
   background-image: linear-gradient(135deg, rgb(171, 220, 255) 0%, rgba(3, 150, 255, .85) 100%);
   display: flex;
-  grid-area: search;
   justify-content: center;
   padding: 1em;
+}
+
+@media(min-width: 961px) {
+  .Search {
+    grid-area: search;
+  }
 }
 
 .Input-group {
@@ -12,12 +17,12 @@
   border-radius: 50em;
   box-shadow: 0 0 0 .25em rgba(255, 255, 255, 1);
   display: flex;
-  width: 80%;
+  width: 100%;
 }
 
 @media(min-width: 961px) {
   .Input-group {
-    width: 25%;
+    width: 50%;
   }
 }
 

@@ -10,14 +10,14 @@
 
 @media(max-width: 960px) {
   .Users {
-    padding-left: 2em;
-    padding-right: 2em;
+    padding-left: 1em;
+    padding-right: 1em;
   }
 }
 
 @media(min-width: 961px) {
   .Users {
-    margin-left: 4em;
+    padding-left: 2em;
   }
 }
 
