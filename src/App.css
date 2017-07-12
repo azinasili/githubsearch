@@ -1,19 +1,18 @@
 .App {
   display: grid;
   height: 100%;
-  grid-gap: 2em;
   grid-template-areas:
     'search'
-    'message'
     'users'
     'repos';
-  grid-template-rows: auto 1fr;
-  padding-bottom: 2em;
+  grid-template-rows: min-content;
+  padding-bottom: 1em;
   position: relative;
 }
 
 @media(min-width: 961px) {
   .App {
+    grid-gap: 2em;
     grid-template-areas:
       'search search'
       'users repos';
