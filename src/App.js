@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Panel from './containers/panel/Panel';
 import Search from './components/search/Search';
 import Users from './components/users/Users';
 import Repos from './components/repos/Repos';
@@ -57,20 +58,11 @@ class App extends Component {
   }
 
   render() {
-    let users;
-    let repos;
-    let message;
-    if (Object.keys(this.state.userData).length > 0) {
-      users = <Users users={this.state.userData} />;
-    }
-
-    if (Object.keys(this.state.repoData).length > 0) {
-      repos = <Repos repos={this.state.repoData} />;
-    }
-
-    if (!users && !repos) {
-      message = <Message message={this.state.message} />
-    }
+    let userCheck = Object.keys(this.state.userData).length > 0;
+    let repoCheck = Object.keys(this.state.repoData).length > 0;
+    let message = <Message message={this.state.message} />;
+    let users = <Panel title="Users"><Users users={this.state.userData} /></Panel>;
+    let repos = <Panel title="Repositories"><Repos repos={this.state.repoData} /></Panel>;
 
     return (
       <div className="App">
@@ -78,9 +70,9 @@ class App extends Component {
           searchString={this.state.searchString}
           getSearchString={this.getSearchString}
           getSearchResults={this.getSearchResults} />
-        {message}
-        {users}
-        {repos}
+        {!userCheck && !repoCheck ? message : false}
+        {userCheck ? users : false}
+        {repoCheck ? repos : false}
       </div>
     );
   }
