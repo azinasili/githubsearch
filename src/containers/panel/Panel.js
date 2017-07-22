@@ -14,7 +14,7 @@ class Panel extends Component {
   }
 
   handleSelect(event) {
-    this.setState({selectValue: event.target.value});
+    this.setState({selectValue: parseInt(event.target.value, 0)});
   }
 
   render() {
@@ -26,7 +26,7 @@ class Panel extends Component {
           <h2 className="Panel-title">Top {selectValue} {this.state.title}</h2>
           <form className="Panel-switcher">
             <Select
-              selectValue={this.state.selectValue}
+              selectValue={selectValue}
               selectOptions={this.state.selectOptions}
               handleSelect={this.handleSelect} />
           </form>
