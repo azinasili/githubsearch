@@ -6,10 +6,9 @@ class Panel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: this.props.title,
       selectValue: null,
       selectOptions: [10, 20, 30],
-    }
+    };
     this.handleSelect = this.handleSelect.bind(this);
   }
 
@@ -23,7 +22,7 @@ class Panel extends Component {
     return (
       <div className="Panel">
         <div className="Panel-header">
-          <h2 className="Panel-title">Top {selectValue} {this.state.title}</h2>
+          <h2 className="Panel-title">Top {selectValue} {this.props.title}</h2>
           <Select
             selectValue={selectValue}
             selectOptions={this.state.selectOptions}
