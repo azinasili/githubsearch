@@ -4,7 +4,12 @@
   display: flex;
   justify-content: center;
   padding: 1em;
-  grid-column: span 2;
+}
+
+@media(min-width: 961px) {
+  .Search {
+    grid-column: span 2;
+  }
 }
 
 .Input-group {
