@@ -1,0 +1,40 @@
+.Panel {
+  background-color: #fff;
+  border: .0625em solid rgba(0, 0, 0, .1);
+  border-radius: .3em;
+  position: relative;
+}
+
+@media(max-width: 960px) {
+  .Panel {
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+}
+
+@media(min-width: 961px) {
+  .Panel {
+    margin-left: 2em;
+  }
+
+  .Panel + .Panel {
+    margin-left: 0;
+    margin-right: 2em;
+  }
+}
+
+.Panel-header {
+  align-items: baseline;
+  background-color: #eee;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.25em 1em;
+}
+
+.Panel-title {
+  margin: 0;
+}
+
+.Panel-body {
+  padding: 1em;
+}
