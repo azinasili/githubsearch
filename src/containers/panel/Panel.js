@@ -24,12 +24,10 @@ class Panel extends Component {
       <div className="Panel">
         <div className="Panel-header">
           <h2 className="Panel-title">Top {selectValue} {this.state.title}</h2>
-          <form className="Panel-switcher">
-            <Select
-              selectValue={selectValue}
-              selectOptions={this.state.selectOptions}
-              handleSelect={this.handleSelect} />
-          </form>
+          <Select
+            selectValue={selectValue}
+            selectOptions={this.state.selectOptions}
+            handleSelect={this.handleSelect} />
         </div>
         <div className="Panel-body">
           {this.props.children}
