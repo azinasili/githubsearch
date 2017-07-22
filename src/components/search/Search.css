@@ -4,12 +4,7 @@
   display: flex;
   justify-content: center;
   padding: 1em;
-}
-
-@media(min-width: 961px) {
-  .Search {
-    grid-area: search;
-  }
+  grid-column: span 2;
 }
 
 .Input-group {
