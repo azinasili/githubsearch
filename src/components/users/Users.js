@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Select from '../select/Select.js';
 import './Users.css';
 
 class Users extends Component {
@@ -7,9 +6,7 @@ class Users extends Component {
     super(props);
     this.state = {
       users: [],
-      selectValue: 10,
-    }
-    this.handleSelect = this.handleSelect.bind(this);
+    };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -18,15 +15,11 @@ class Users extends Component {
     }
   }
 
-  handleSelect(event) {
-    this.setState({selectValue: event.target.value});
-  }
-
   render() {
-    let users;
-    let userList;
+    let users = null;
+
     if (this.state.users !== undefined && this.state.users.length > 0) {
-      userList = this.state.users.slice(0, this.state.selectValue);
+      let userList = this.state.users.slice(0, this.state.selectValue);
       users = userList.map((user) => {
         return (
           <li key={user.id} className="User">
@@ -40,15 +33,7 @@ class Users extends Component {
     }
 
     return (
-      <div className="Users">
-        <div className="Users-header">
-          <h2 className="Users-title">Top {this.state.selectValue} Users</h2>
-          <form className="Users-switcher">
-            <Select selectValue={this.state.selectValue} handleSelect={this.handleSelect} />
-          </form>
-        </div>
-        <ul className="User-list">{users}</ul>
-      </div>
+      <ul className="User-list">{users}</ul>
     );
   }
 }

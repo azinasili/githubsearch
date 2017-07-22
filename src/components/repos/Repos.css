@@ -1,10 +1,10 @@
-.Repos {
+/* .Repos {
   background-color: rgba(255, 255, 255, .15);
   grid-area: repos;
   position: relative;
-}
+} */
 
-@media(max-width: 960px) {
+/* @media(max-width: 960px) {
   .Repos {
     padding-left: 1em;
     padding-right: 1em;
@@ -15,15 +15,15 @@
   .Repos {
     padding-right: 2em;
   }
-}
+} */
 
-.Repos-header {
+/* .Repos-header {
   align-items: baseline;
   display: flex;
   justify-content: space-between;
-}
+} */
 
-.Repos-list {
+ .Repos-list {
   font-size: .875em;
   list-style: none;
   margin: 0;

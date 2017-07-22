@@ -3,7 +3,7 @@
  * User Profile Widget: https://dribbble.com/shots/1790784-User-Profile-Widget
  * Browse Profiles: https://dribbble.com/shots/2622997-Browse-profiles
  */
-.Users {
+/* .Users {
   grid-area: users;
   position: relative;
 }
@@ -19,13 +19,13 @@
   .Users {
     padding-left: 2em;
   }
-}
+} */
 
-.Users-header {
+/* .Users-header {
   align-items: baseline;
   display: flex;
   justify-content: space-between;
-}
+} */
 
 .User-list {
   display: grid;
