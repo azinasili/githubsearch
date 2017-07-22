@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Select from '../../components/select/Select.js';
 import './Panel.css';
 
@@ -35,5 +36,9 @@ class Panel extends Component {
     );
   }
 }
+
+Panel.propTypes = {
+  title: PropTypes.string,
+};
 
 export default Panel;
