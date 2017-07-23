@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Header from './containers/header/Header';
 import Panel from './containers/panel/Panel';
-import Search from './components/search/Search';
 import Users from './components/users/Users';
 import Repos from './components/repos/Repos';
 import Message from './components/message/Message';
@@ -66,7 +66,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Search
+        <Header
           searchString={this.state.searchString}
           getSearchString={this.getSearchString}
           getSearchResults={this.getSearchResults} />
