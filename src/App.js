@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getUserResultLength, getRepoResultLength } from './actions/getResultLength';
 import Header from './containers/header/Header';
+import Footer from './containers/footer/Footer';
 import Panel from './containers/panel/Panel';
 import Users from './components/users/Users';
 import Repos from './components/repos/Repos';
@@ -43,6 +44,7 @@ class App extends Component {
         {!userCheck && !repoCheck ? message : false}
         {userCheck ? users : false}
         {repoCheck ? repos : false}
+        <Footer />
       </div>
     );
   }
