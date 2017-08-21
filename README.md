@@ -9,7 +9,3 @@ Simply go to the demo and use the search bar to find users and repos. By default
 
 ## Known Bugs
 Repos may not show search results immediatly.
-
-## TODO
-- Make responsive
-- New styles
