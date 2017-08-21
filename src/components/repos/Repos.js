@@ -1,25 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './Repos.css';
 
 class Repos extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      repos: [],
-    };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.state.repos !== nextProps.repos.items) {
-      this.setState({repos: nextProps.repos.items});
-    }
-  }
-
   render() {
     let repos = null;
 
-    if (this.state.repos !== undefined && this.state.repos.length > 0) {
-      let repoList = this.state.repos.slice(0, this.state.selectValue);
+    if (this.props.repos !== undefined && this.props.repos.length > 0) {
+      let repoList = this.props.repos.slice(0, this.props.reposResultLength);
       repos = repoList.map((repo) => {
         return (
           <li key={repo.id} className="Repo">
@@ -53,4 +41,11 @@ class Repos extends Component {
   }
 }
 
-export default Repos;
+function mapStateToProps(state) {
+  return {
+    repos: state.repos.items,
+    reposResultLength: state.searchResultLength.repos,
+  };
+}
+
+export default connect(mapStateToProps)(Repos);

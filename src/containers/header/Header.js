@@ -1,25 +1,49 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Search from '../../components/search/Search.js';
+import { connect } from 'react-redux';
+import { getSearchValue, getSearchString } from '../../actions/getSearch';
+import { getUsers } from '../../actions/getUsers';
+import { getRepos } from '../../actions/getRepos';
+import Search from '../../components/search/Search';
 import './Header.css';
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.searchResults = this.searchResults.bind(this);
+    this.updateSearch = this.updateSearch.bind(this);
+  }
+
+  searchResults(event) {
+    event.preventDefault();
+
+    const SEARCH_STRING = this.props.searchString;
+
+    this.props.dispatch(getUsers(SEARCH_STRING));
+    this.props.dispatch(getRepos(SEARCH_STRING));
+  }
+
+  updateSearch(string) {
+    this.props.dispatch(getSearchValue(string));
+    this.props.dispatch(getSearchString(string));
+  }
+
   render() {
     return (
       <header className="Header">
         <Search
-          searchString={this.props.searchString}
-          getSearchString={this.props.getSearchString}
-          getSearchResults={this.props.getSearchResults} />
+          searchValue={this.props.searchValue}
+          updateSearch={this.updateSearch}
+          searchResults={this.searchResults} />
       </header>
     );
   }
 }
 
-Header.propTypes = {
-  searchString: PropTypes.string,
-  getSearchString: PropTypes.func,
-  getSearchResults: PropTypes.func,
-};
+function mapStateToProps(state) {
+  return {
+    searchString: state.search.string,
+    searchValue: state.search.value,
+  };
+}
 
-export default Header;
+export default connect(mapStateToProps)(Header);

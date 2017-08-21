@@ -1,25 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './Users.css';
 
 class Users extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      users: [],
-    };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.state.users !== nextProps.users.items) {
-      this.setState({users: nextProps.users.items});
-    }
-  }
-
   render() {
     let users = null;
 
-    if (this.state.users !== undefined && this.state.users.length > 0) {
-      let userList = this.state.users.slice(0, this.state.selectValue);
+    if (this.props.users !== undefined && this.props.users.length > 0) {
+      let userList = this.props.users.slice(0, this.props.usersResultLength);
       users = userList.map((user) => {
         return (
           <li key={user.id} className="User">
@@ -38,4 +26,11 @@ class Users extends Component {
   }
 }
 
-export default Users;
+function mapStateToProps(state) {
+  return {
+    users: state.users.items,
+    usersResultLength: state.searchResultLength.users,
+  };
+}
+
+export default connect(mapStateToProps)(Users);

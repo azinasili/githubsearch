@@ -1,24 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Select from '../../components/select/Select.js';
+import Select from '../../components/select/Select';
 import './Panel.css';
 
 class Panel extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectValue: null,
-      selectOptions: [10, 20, 30],
-    };
-    this.handleSelect = this.handleSelect.bind(this);
-  }
-
-  handleSelect(event) {
-    this.setState({selectValue: parseInt(event.target.value, 0)});
-  }
-
   render() {
-    let selectValue = this.state.selectValue ? this.state.selectValue : this.state.selectOptions[0];
+    let selectValue = this.props.selectValue ? this.props.selectValue : this.props.selectOptions[0];
 
     return (
       <div className="Panel">
@@ -26,8 +14,8 @@ class Panel extends Component {
           <h2 className="Panel-title">Top {selectValue} {this.props.title}</h2>
           <Select
             selectValue={selectValue}
-            selectOptions={this.state.selectOptions}
-            handleSelect={this.handleSelect} />
+            selectOptions={this.props.selectOptions}
+            handleSelect={this.props.handleSelect} />
         </div>
         <div className="Panel-body">
           {this.props.children}
@@ -37,8 +25,16 @@ class Panel extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    selectOptions: state.selectOptions,
+  };
+}
+
 Panel.propTypes = {
   title: PropTypes.string,
+  handleSelect: PropTypes.func,
+  selectValue: PropTypes.number,
 };
 
-export default Panel;
+export default connect(mapStateToProps)(Panel);
