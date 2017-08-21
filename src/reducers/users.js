@@ -1,11 +1,11 @@
-const usersDefault = {
+const USERS_DEFAULT = {
   items: [],
   fetching: false,
   fetched: false,
   error: null,
 };
 
-function users(state = usersDefault, action) {
+function users(state = USERS_DEFAULT, action) {
   switch (action.type) {
     case 'RESOLVED_GET_USERS':
       return {

@@ -1,11 +1,11 @@
-const reposDefault = {
+const REPOS_DEFAULT = {
   items: [],
   fetching: false,
   fetched: false,
   error: null,
 };
 
-function repos(state = reposDefault, action) {
+function repos(state = REPOS_DEFAULT, action) {
   switch (action.type) {
     case 'RESOLVED_GET_REPOS':
       return {

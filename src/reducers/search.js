@@ -1,9 +1,9 @@
-const searchDefaults = {
+const SEARCH_DEFAULTS = {
   string: '',
   value: '',
 }
 
-function search(state = searchDefaults, action) {
+function search(state = SEARCH_DEFAULTS, action) {
   switch (action.type) {
     case 'SEARCH_STRING':
       return {
