@@ -3,34 +3,14 @@
  * User Profile Widget: https://dribbble.com/shots/1790784-User-Profile-Widget
  * Browse Profiles: https://dribbble.com/shots/2622997-Browse-profiles
  */
-.Users {
-  grid-area: users;
-  position: relative;
-}
-
-@media(max-width: 960px) {
-  .Users {
-    padding-left: 1em;
-    padding-right: 1em;
-  }
-}
-
-@media(min-width: 961px) {
-  .Users {
-    padding-left: 2em;
-  }
-}
-
-.Users-header {
-  align-items: baseline;
-  display: flex;
-  justify-content: space-between;
-}
-
 .User-list {
+  align-items: flex-start;
   display: grid;
   font-size: .875em;
-  grid-template-columns: repeat(2, 48%);
+  grid-gap: 1.75em;
+  grid-template-columns: repeat(2, calc(50% - (1.75em / 2)));
+  height: 100%;
+  overflow-y: auto;
   justify-content: space-between;
   list-style: none;
   margin: 0;
@@ -39,25 +19,25 @@
 
 @media(min-width: 641px) and (max-width: 768px) {
   .User-list {
-    grid-template-columns: repeat(3, 30%);
+    grid-template-columns: repeat(3, calc(32% - (1.75em / 2)));
   }
 }
 
 @media(min-width: 769px) and (max-width: 960px) {
   .User-list {
-    grid-template-columns: repeat(4, 22%);
+    grid-template-columns: repeat(4, calc(23% - (1.75em / 3)));
   }
 }
 
 @media(min-width: 1041px) {
   .User-list {
-    grid-template-columns: repeat(3, 30%);
+    grid-template-columns: repeat(3, calc(32% - (1.75em / 2)));
   }
 }
 
 @media(min-width: 1261px) {
   .User-list {
-    grid-template-columns: repeat(4, 22%);
+    grid-template-columns: repeat(4, calc(25% - 1.75em));
   }
 }
 
@@ -65,11 +45,6 @@
   border: .0625em solid rgba(0, 0, 0, .1);
   border-radius: .3em;
   display: flex;
-  /*
-    16% seems to be a magic number.
-    Using a percentage scales with the variable gap size
-  */
-  margin-bottom: 16%;
 }
 
 .User:hover,

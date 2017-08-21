@@ -1,32 +1,13 @@
 import React, { Component } from 'react';
-import Select from '../select/Select.js';
+import { connect } from 'react-redux';
 import './Repos.css';
 
 class Repos extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      repos: [],
-      selectValue: 10,
-    }
-    this.handleSelect = this.handleSelect.bind(this);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.state.repos !== nextProps.repos.items) {
-      this.setState({repos: nextProps.repos.items});
-    }
-  }
-
-  handleSelect(event) {
-    this.setState({selectValue: event.target.value});
-  }
-
   render() {
-    let repos;
-    let repoList;
-    if (this.state.repos !== undefined && this.state.repos.length > 0) {
-      repoList = this.state.repos.slice(0, this.state.selectValue);
+    let repos = null;
+
+    if (this.props.repos !== undefined && this.props.repos.length > 0) {
+      let repoList = this.props.repos.slice(0, this.props.reposResultLength);
       repos = repoList.map((repo) => {
         return (
           <li key={repo.id} className="Repo">
@@ -55,17 +36,16 @@ class Repos extends Component {
     }
 
     return (
-      <div className="Repos">
-        <div className="Repos-header">
-          <h2 className="Repos-title">Top {this.state.selectValue} Repositories</h2>
-          <form className="Repos-switcher">
-            <Select selectValue={this.state.selectValue} handleSelect={this.handleSelect} />
-          </form>
-        </div>
-        <ul className="Repos-list">{repos}</ul>
-      </div>
+      <ul className="Repos-list">{repos}</ul>
     );
   }
 }
 
-export default Repos;
+function mapStateToProps(state) {
+  return {
+    repos: state.repos.items,
+    reposResultLength: state.searchResultLength.repos,
+  };
+}
+
+export default connect(mapStateToProps)(Repos);

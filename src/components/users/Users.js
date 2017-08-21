@@ -1,32 +1,13 @@
 import React, { Component } from 'react';
-import Select from '../select/Select.js';
+import { connect } from 'react-redux';
 import './Users.css';
 
 class Users extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      users: [],
-      selectValue: 10,
-    }
-    this.handleSelect = this.handleSelect.bind(this);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.state.users !== nextProps.users.items) {
-      this.setState({users: nextProps.users.items});
-    }
-  }
-
-  handleSelect(event) {
-    this.setState({selectValue: event.target.value});
-  }
-
   render() {
-    let users;
-    let userList;
-    if (this.state.users !== undefined && this.state.users.length > 0) {
-      userList = this.state.users.slice(0, this.state.selectValue);
+    let users = null;
+
+    if (this.props.users !== undefined && this.props.users.length > 0) {
+      let userList = this.props.users.slice(0, this.props.usersResultLength);
       users = userList.map((user) => {
         return (
           <li key={user.id} className="User">
@@ -40,17 +21,16 @@ class Users extends Component {
     }
 
     return (
-      <div className="Users">
-        <div className="Users-header">
-          <h2 className="Users-title">Top {this.state.selectValue} Users</h2>
-          <form className="Users-switcher">
-            <Select selectValue={this.state.selectValue} handleSelect={this.handleSelect} />
-          </form>
-        </div>
-        <ul className="User-list">{users}</ul>
-      </div>
+      <ul className="User-list">{users}</ul>
     );
   }
 }
 
-export default Users;
+function mapStateToProps(state) {
+  return {
+    users: state.users.items,
+    usersResultLength: state.searchResultLength.users,
+  };
+}
+
+export default connect(mapStateToProps)(Users);

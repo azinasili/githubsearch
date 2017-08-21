@@ -1,89 +1,61 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import Search from './components/search/Search';
+import { connect } from 'react-redux';
+import { getUserResultLength, getRepoResultLength } from './actions/getResultLength';
+import Header from './containers/header/Header';
+import Panel from './containers/panel/Panel';
 import Users from './components/users/Users';
 import Repos from './components/repos/Repos';
 import Message from './components/message/Message';
 import './App.css';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      searchString: '',
-      userData: [],
-      repoData: [],
-      message: 'Use the search bar to find users and repositories on GitHub 😉',
-    };
-    this.ajaxRequest = this.ajaxRequest.bind(this);
-    this.getSearchResults = this.getSearchResults.bind(this);
-    this.getSearchString = this.getSearchString.bind(this);
+  constructor(props) {
+    super(props);
+    this.handleUserSelect = this.handleUserSelect.bind(this);
+    this.handleReposSelect = this.handleReposSelect.bind(this);
   }
 
-  ajaxRequest(options = {}) {
-    const defaults = {
-      url: '',
-      state: '',
-      ...options
-    };
-
-    axios.get(defaults.url)
-      .then((response) => {
-        console.log(response.data);
-        this.setState({[defaults.state]: response.data});
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  componentWillMount() {
+    this.props.dispatch(getUserResultLength);
+    this.props.dispatch(getRepoResultLength);
   }
 
-  getSearchString(input) {
-    this.setState({searchString: input});
+  handleUserSelect(event) {
+    const SELECT_VALUE = parseInt(event.target.value, 0);
+    this.props.dispatch(getUserResultLength(SELECT_VALUE));
   }
 
-  getSearchResults(event) {
-    event.preventDefault();
-    const SEARCH_STRING = this.state.searchString.replace(/\s/g,'');
-
-    this.ajaxRequest({
-      url: `https://api.github.com/search/users?q=${SEARCH_STRING}`,
-      state: `userData`,
-    });
-    this.ajaxRequest({
-      url: `https://api.github.com/search/repositories?q=${SEARCH_STRING}`,
-      state: `repoData`,
-    });
-    this.setState({searchString: ''});
+  handleReposSelect(event) {
+    const SELECT_VALUE = parseInt(event.target.value, 0);
+    this.props.dispatch(getRepoResultLength(SELECT_VALUE));
   }
 
   render() {
-    let users;
-    let repos;
-    let message;
-    if (Object.keys(this.state.userData).length > 0) {
-      users = <Users users={this.state.userData} />;
-    }
-
-    if (Object.keys(this.state.repoData).length > 0) {
-      repos = <Repos repos={this.state.repoData} />;
-    }
-
-    if (!users && !repos) {
-      message = <Message message={this.state.message} />
-    }
+    let userCheck = this.props.users.length > 0;
+    let repoCheck = this.props.repos.length > 0;
+    let message = <Message message={this.props.message} />;
+    let users = <Panel title="Users" handleSelect={this.handleUserSelect} selectValue={this.props.usersResultLength}><Users /></Panel>;
+    let repos = <Panel title="Repositories" handleSelect={this.handleReposSelect} selectValue={this.props.reposResultLength}><Repos /></Panel>;
 
     return (
       <div className="App">
-        <Search
-          searchString={this.state.searchString}
-          getSearchString={this.getSearchString}
-          getSearchResults={this.getSearchResults} />
-        {message}
-        {users}
-        {repos}
+        <Header />
+        {!userCheck && !repoCheck ? message : false}
+        {userCheck ? users : false}
+        {repoCheck ? repos : false}
       </div>
     );
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    message: state.defaultMessage,
+    users: state.users.items,
+    repos: state.repos.items,
+    usersResultLength: state.searchResultLength.users,
+    reposResultLength: state.searchResultLength.repos,
+  };
+}
+
+export default connect(mapStateToProps)(App);

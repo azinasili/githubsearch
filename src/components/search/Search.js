@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './Search.css';
 
 class Search extends Component {
   render() {
     return (
-      <form onSubmit={this.props.getSearchResults} className="Search">
+      <form onSubmit={this.props.searchResults} className="Search">
         <div className="Input-group">
           <p className="Input-field">
             <label className="Input-label sr-only" htmlFor="profileSearch">Profile Search</label>
@@ -14,8 +15,8 @@ class Search extends Component {
               name="profileSearch"
               className="Input"
               placeholder="Search GitHub"
-              value={this.props.searchString}
-              onChange={(event) => this.props.getSearchString(event.target.value)} />
+              value={this.props.searchValue}
+              onChange={(event) => this.props.updateSearch(event.target.value)} />
           </p>
           <input type="submit" value="Search" className="Input-button" />
         </div>
@@ -23,5 +24,11 @@ class Search extends Component {
     );
   }
 }
+
+Search.propTypes = {
+  searchValue: PropTypes.string,
+  updateSearch: PropTypes.func,
+  searchResults: PropTypes.func,
+};
 
 export default Search;

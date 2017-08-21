@@ -1,0 +1,42 @@
+.Panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+@media(max-width: 960px) {
+  .Panel {
+    margin-left: 1em;
+    margin-top: 1em;
+    margin-right: 1em;
+  }
+}
+
+@media(min-width: 961px) {
+  .Panel {
+    margin-left: 2em;
+  }
+
+  .Panel + .Panel {
+    margin-left: 0;
+    margin-right: 2em;
+  }
+}
+
+.Panel-header {
+  align-items: baseline;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.Panel-title {
+  margin: 0;
+}
+
+.Panel-body {
+  flex: 1 0 0%;
+  overflow: hidden;
+}
