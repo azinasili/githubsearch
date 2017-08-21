@@ -1,0 +1,14 @@
+.Footer {
+  align-items: center;
+  background-color: whitesmoke;
+  border-top: .0625em solid silver;
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+}
+
+@media(min-width: 961px) {
+  .Footer {
+    display: none;
+  }
+}

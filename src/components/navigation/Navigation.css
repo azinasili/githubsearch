@@ -1,0 +1,18 @@
+.Navigation {
+  width: 100%;
+}
+
+.Navigation-list {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.Navigation-listitem {
+  font-size: .875em;
+  padding: 1em;
+  text-transform: uppercase;
+}
