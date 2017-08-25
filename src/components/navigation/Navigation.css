@@ -33,7 +33,13 @@
 }
 
 .Navigation-button:hover,
-.Navigation-button:focus {
-  background-color: #27A8E8;
-  color: #fff;
+.Navigation-button:focus,
+.Navigation-button:active,
+.Navigation-button--active {
+  color: #27A8E8;
+}
+
+.Navigation-button:active,
+.Navigation-button--active {
+  font-weight: 600;
 }
