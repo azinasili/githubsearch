@@ -55,8 +55,8 @@ function mapStateToProps(state) {
     message: state.defaultMessage,
     users: state.users.items,
     repos: state.repos.items,
-    userView: state.mobileView.users,
-    repoView: state.mobileView.repos,
+    userView: state.mobileView[0].selected,
+    repoView: state.mobileView[1].selected,
     usersResultLength: state.searchResultLength.users,
     reposResultLength: state.searchResultLength.repos,
   };
