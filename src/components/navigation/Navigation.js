@@ -5,16 +5,25 @@ import './Navigation.css';
 
 class Navigation extends Component {
   render() {
-    const CLASSES = classNames({
-      'Navigation-button': true,
+    const LINKS = this.props.links.map((link, index) => {
+      const CLASSES = classNames({
+        'Navigation-button': true,
+        'Navigation-button--active': link.selected,
+      });
+
+      return (
+        <li key={link.id} className="Navigation-listitem">
+          <button
+            onClick={(event) => this.props.switchView(event, link.id)}
+            className={CLASSES}>{link.title}</button>
+        </li>
+      );
     });
-    console.log(this.props);
 
     return (
       <nav className="Navigation">
         <ul className="Navigation-list">
-          <li className="Navigation-listitem"><button onClick={this.props.switchUserView} className="Navigation-button">Users</button></li>
-          <li className="Navigation-listitem"><button onClick={this.props.switchRepoView} className="Navigation-button">Repos</button></li>
+          {LINKS}
         </ul>
       </nav>
     );
@@ -22,9 +31,8 @@ class Navigation extends Component {
 }
 
 Navigation.propTypes = {
-  active: PropTypes.bool,
-  switchUserView: PropTypes.func,
-  switchRepoView: PropTypes.func,
+  links: PropTypes.array,
+  switchView: PropTypes.func,
 };
 
 export default Navigation;

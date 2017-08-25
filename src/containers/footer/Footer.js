@@ -7,37 +7,33 @@ import './Footer.css';
 class Footer extends Component {
   constructor(props) {
     super(props);
-    this.switchUserView = this.switchUserView.bind(this);
-    this.switchRepoView = this.switchRepoView.bind(this);
+    this.switchView = this.switchView.bind(this);
   }
 
-  switchUserView(event) {
+  switchView(event, id) {
     event.preventDefault();
-    this.props.dispatch(switchToUsers());
-  }
-
-  switchRepoView(event) {
-    event.preventDefault();
-    this.props.dispatch(switchToRepos());
+    console.log(id);
+    if (this.props.userView) this.props.dispatch(switchToUsers(id));
+    if (this.props.repoView) this.props.dispatch(switchToRepos(id));
+    console.log(this.props.mobileView);
   }
 
   render() {
     return (
       <footer className="Footer">
         <Nav
-        active={this.props.userView ? this.props.userView : this.props.repoView}
-        switchUserView={this.switchUserView}
-        switchRepoView={this.switchRepoView} />
+          links={this.props.mobileView}
+          switchView={this.switchView}/>
       </footer>
     );
   }
 }
 
-
 function mapStateToProps(state) {
   return {
-    userView: state.mobileView.users,
-    repoView: state.mobileView.repos,
+    userView: state.mobileView[0].selected,
+    repoView: state.mobileView[1].selected,
+    mobileView: state.mobileView,
   };
 }
 
