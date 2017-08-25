@@ -44,7 +44,7 @@ class App extends Component {
         {!userCheck && !repoCheck ? message : false}
         {userCheck ? users : false}
         {repoCheck ? repos : false}
-        <Footer />
+        {userCheck && repoCheck ? <Footer /> : false}
       </div>
     );
   }
