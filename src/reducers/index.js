@@ -4,6 +4,7 @@ import repos from './repos';
 import search from './search';
 import searchResultLength from './searchResultLength';
 import defaultMessage from './defaultMessage';
+import mobileView from './mobileView';
 
 const reducers = {
   selectOptions,
@@ -12,6 +13,7 @@ const reducers = {
   search,
   searchResultLength,
   defaultMessage,
+  mobileView,
 };
 
 export default reducers;
