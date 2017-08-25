@@ -7,9 +7,12 @@
 
 @media(max-width: 960px) {
   .Panel {
-    margin-left: 1em;
-    margin-top: 1em;
-    margin-right: 1em;
+    display: none;
+    margin: 1em;
+  }
+
+  .Panel--active {
+    display: flex;
   }
 }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Select from '../../components/select/Select';
 import './Panel.css';
 
@@ -8,8 +9,13 @@ class Panel extends Component {
   render() {
     let selectValue = this.props.selectValue ? this.props.selectValue : this.props.selectOptions[0];
 
+    const CLASSES = classNames({
+      'Panel': true,
+      'Panel--active': this.props.active,
+    });
+
     return (
-      <div className="Panel">
+      <div className={CLASSES}>
         <div className="Panel-header">
           <h2 className="Panel-title">Top {selectValue} {this.props.title}</h2>
           <Select
@@ -32,6 +38,7 @@ function mapStateToProps(state) {
 }
 
 Panel.propTypes = {
+  active: PropTypes.bool,
   title: PropTypes.string,
   handleSelect: PropTypes.func,
   selectValue: PropTypes.number,
