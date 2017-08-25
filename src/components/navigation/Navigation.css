@@ -13,6 +13,27 @@
 
 .Navigation-listitem {
   font-size: .875em;
-  padding: 1em;
+
+  width: 50%;
+}
+
+.Navigation-listitem:not(:last-child) {
+  margin-right: 1em;
+}
+
+.Navigation-button {
+  border: .0625em solid transparent;
+  background-color: transparent;
+  border-radius: .3em;
+  font-size: .875em;
+  font-weight: 500;
+  padding: .75em 2.25em;
   text-transform: uppercase;
+  width: 100%;
+}
+
+.Navigation-button:hover,
+.Navigation-button:focus {
+  background-color: #27A8E8;
+  color: #fff;
 }
