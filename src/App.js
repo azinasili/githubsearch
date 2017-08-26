@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getUserResultLength, getRepoResultLength } from './actions/getResultLength';
 import Header from './containers/header/Header';
+import Footer from './containers/footer/Footer';
 import Panel from './containers/panel/Panel';
 import Users from './components/users/Users';
 import Repos from './components/repos/Repos';
@@ -34,8 +35,8 @@ class App extends Component {
     let userCheck = this.props.users.length > 0;
     let repoCheck = this.props.repos.length > 0;
     let message = <Message message={this.props.message} />;
-    let users = <Panel title="Users" handleSelect={this.handleUserSelect} selectValue={this.props.usersResultLength}><Users /></Panel>;
-    let repos = <Panel title="Repositories" handleSelect={this.handleReposSelect} selectValue={this.props.reposResultLength}><Repos /></Panel>;
+    let users = <Panel title="Users" handleSelect={this.handleUserSelect} selectValue={this.props.usersResultLength} active={this.props.userView}><Users /></Panel>;
+    let repos = <Panel title="Repositories" handleSelect={this.handleReposSelect} selectValue={this.props.reposResultLength} active={this.props.repoView}><Repos /></Panel>;
 
     return (
       <div className="App">
@@ -43,6 +44,7 @@ class App extends Component {
         {!userCheck && !repoCheck ? message : false}
         {userCheck ? users : false}
         {repoCheck ? repos : false}
+        {userCheck && repoCheck ? <Footer /> : false}
       </div>
     );
   }
@@ -53,6 +55,8 @@ function mapStateToProps(state) {
     message: state.defaultMessage,
     users: state.users.items,
     repos: state.repos.items,
+    userView: state.mobileView[0].selected,
+    repoView: state.mobileView[1].selected,
     usersResultLength: state.searchResultLength.users,
     reposResultLength: state.searchResultLength.repos,
   };

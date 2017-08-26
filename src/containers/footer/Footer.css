@@ -1,0 +1,12 @@
+.Footer {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: .75em 1em;
+}
+
+@media(min-width: 961px) {
+  .Footer {
+    display: none;
+  }
+}

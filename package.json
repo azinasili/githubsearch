@@ -1,6 +1,6 @@
 {
   "name": "githubsearch",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "GitHub Serach built using React.",
   "homepage": "https://azinasili.github.io/githubsearch",
   "author": "hello@azinasili.com",
@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "classnames": "^2.2.5",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
