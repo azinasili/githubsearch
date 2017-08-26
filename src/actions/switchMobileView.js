@@ -1,13 +1,6 @@
-export function switchToUsers(id) {
+export function switchView(id) {
   return {
-    type: 'SWITCH_TO_USER',
-    payload: id,
-  };
-}
-
-export function switchToRepos(id) {
-  return {
-    type: 'SWITCH_TO_REPOS',
+    type: 'SWITCH_VIEW',
     payload: id,
   };
 }

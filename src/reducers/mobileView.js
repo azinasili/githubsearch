@@ -5,10 +5,14 @@ const MOBILE_VIEW_DEFAULTS = [
 
 function mobileView(state = MOBILE_VIEW_DEFAULTS, action) {
   switch(action.type) {
-    case 'SWITCH_TO_USER':
-      return state.map(view => (view.id === action.payload) ? {...view, selected: !view.selected} : view);
-    case 'SWITCH_TO_REPOS':
-      return state.map(view => (view.id === action.payload) ? {...view, selected: !view.selected} : view);
+    case 'SWITCH_VIEW':
+      return state.map((view) => {
+        if (view.id === action.payload) {
+          return {...view, selected: true}
+        } else {
+          return {...view, selected: false}
+        }
+      });
     default:
       return state;
   }
