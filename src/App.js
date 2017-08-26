@@ -35,8 +35,24 @@ class App extends Component {
     let userCheck = this.props.users.length > 0;
     let repoCheck = this.props.repos.length > 0;
     let message = <Message message={this.props.message} />;
-    let users = <Panel title="Users" handleSelect={this.handleUserSelect} selectValue={this.props.usersResultLength} active={this.props.userView}><Users /></Panel>;
-    let repos = <Panel title="Repositories" handleSelect={this.handleReposSelect} selectValue={this.props.reposResultLength} active={this.props.repoView}><Repos /></Panel>;
+    let users = (
+      <Panel
+        title={this.props.mobileView[0].title}
+        handleSelect={this.handleUserSelect}
+        selectValue={this.props.resultLength.users}
+        active={this.props.mobileView[0].selected}>
+          <Users />
+      </Panel>
+    );
+    let repos = (
+      <Panel
+        title={this.props.mobileView[1].title}
+        handleSelect={this.handleReposSelect}
+        selectValue={this.props.resultLength.repos}
+        active={this.props.mobileView[1].selected}>
+          <Repos />
+      </Panel>
+    );
 
     return (
       <div className="App">
@@ -55,10 +71,8 @@ function mapStateToProps(state) {
     message: state.defaultMessage,
     users: state.users.items,
     repos: state.repos.items,
-    userView: state.mobileView[0].selected,
-    repoView: state.mobileView[1].selected,
-    usersResultLength: state.searchResultLength.users,
-    reposResultLength: state.searchResultLength.repos,
+    mobileView: state.mobileView,
+    resultLength: state.searchResultLength,
   };
 }
 
