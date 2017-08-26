@@ -5,7 +5,7 @@ import './Navigation.css';
 
 class Navigation extends Component {
   render() {
-    const LINKS = this.props.links.map((link, index) => {
+    const LINKS = this.props.links.map((link) => {
       const CLASSES = classNames({
         'Navigation-button': true,
         'Navigation-button--active': link.selected,
@@ -14,7 +14,7 @@ class Navigation extends Component {
       return (
         <li key={link.id} className="Navigation-listitem">
           <button
-            onClick={(event) => this.props.switchView(event, link.id)}
+            onClick={() => this.props.switchView(link.id)}
             className={CLASSES}>{link.title}</button>
         </li>
       );
