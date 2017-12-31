@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getSearchValue, getSearchString } from '../../actions/getSearch';
-import { getUsers } from '../../actions/getUsers';
-import { getRepos } from '../../actions/getRepos';
+import getUsers from '../../actions/getUsers';
+import getRepos from '../../actions/getRepos';
 import Search from '../../components/search/Search';
 import './Header.css';
+
+function mapStateToProps(state) {
+  return {
+    searchString: state.search.string,
+    searchValue: state.search.value,
+  };
+}
 
 class Header extends Component {
   constructor(props) {
@@ -37,13 +44,6 @@ class Header extends Component {
       </header>
     );
   }
-}
-
-function mapStateToProps(state) {
-  return {
-    searchString: state.search.string,
-    searchValue: state.search.value,
-  };
 }
 
 export default connect(mapStateToProps)(Header);

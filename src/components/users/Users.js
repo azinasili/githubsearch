@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Users.css';
 
+function mapStateToProps(state) {
+  return {
+    users: state.users.items,
+    usersResultLength: state.searchResultLength.users,
+  };
+}
+
 class Users extends Component {
   render() {
     let users = null;
@@ -24,13 +31,6 @@ class Users extends Component {
       <ul className="User-list">{users}</ul>
     );
   }
-}
-
-function mapStateToProps(state) {
-  return {
-    users: state.users.items,
-    usersResultLength: state.searchResultLength.users,
-  };
 }
 
 export default connect(mapStateToProps)(Users);

@@ -1,24 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getUserResultLength, getRepoResultLength } from './actions/getResultLength';
-import Header from './containers/header/Header';
-import Footer from './containers/footer/Footer';
-import Panel from './containers/panel/Panel';
-import Users from './components/users/Users';
-import Repos from './components/repos/Repos';
-import Message from './components/message/Message';
-import './App.css';
+import { getUserResultLength, getRepoResultLength } from '../../actions/getResultLength';
+import Header from '../../containers/header/Header';
+import Footer from '../../containers/footer/Footer';
+import Panel from '../../containers/panel/Panel';
+import Users from '../../components/users/Users';
+import Repos from '../../components/repos/Repos';
+import Message from '../../components/message/Message';
+import './index.css';
+
+function mapStateToProps(state) {
+  return {
+    message: state.defaultMessage,
+    users: state.users.items,
+    repos: state.repos.items,
+    mobileView: state.mobileView,
+    resultLength: state.searchResultLength,
+  };
+}
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.handleUserSelect = this.handleUserSelect.bind(this);
     this.handleReposSelect = this.handleReposSelect.bind(this);
-  }
-
-  componentWillMount() {
-    this.props.dispatch(getUserResultLength);
-    this.props.dispatch(getRepoResultLength);
   }
 
   handleUserSelect(event) {
@@ -29,6 +34,11 @@ class App extends Component {
   handleReposSelect(event) {
     const SELECT_VALUE = parseInt(event.target.value, 0);
     this.props.dispatch(getRepoResultLength(SELECT_VALUE));
+  }
+
+  componentWillMount() {
+    this.props.dispatch(getUserResultLength);
+    this.props.dispatch(getRepoResultLength);
   }
 
   render() {
@@ -64,16 +74,6 @@ class App extends Component {
       </div>
     );
   }
-}
-
-function mapStateToProps(state) {
-  return {
-    message: state.defaultMessage,
-    users: state.users.items,
-    repos: state.repos.items,
-    mobileView: state.mobileView,
-    resultLength: state.searchResultLength,
-  };
 }
 
 export default connect(mapStateToProps)(App);
