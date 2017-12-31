@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Repos.css';
 
+function mapStateToProps(state) {
+  return {
+    repos: state.repos.items,
+    reposResultLength: state.searchResultLength.repos,
+  };
+}
+
 class Repos extends Component {
   render() {
     let repos = null;
@@ -39,13 +46,6 @@ class Repos extends Component {
       <ul className="Repos-list">{repos}</ul>
     );
   }
-}
-
-function mapStateToProps(state) {
-  return {
-    repos: state.repos.items,
-    reposResultLength: state.searchResultLength.repos,
-  };
 }
 
 export default connect(mapStateToProps)(Repos);

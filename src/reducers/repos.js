@@ -5,7 +5,7 @@ const REPOS_DEFAULT = {
   error: null,
 };
 
-function repos(state = REPOS_DEFAULT, action) {
+export default function repos(state = REPOS_DEFAULT, action) {
   switch (action.type) {
     case 'RESOLVED_GET_REPOS':
       return {
@@ -25,5 +25,3 @@ function repos(state = REPOS_DEFAULT, action) {
       return state;
   }
 };
-
-export default repos;

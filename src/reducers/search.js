@@ -3,7 +3,7 @@ const SEARCH_DEFAULTS = {
   value: '',
 }
 
-function search(state = SEARCH_DEFAULTS, action) {
+export default function search(state = SEARCH_DEFAULTS, action) {
   switch (action.type) {
     case 'SEARCH_STRING':
       return {
@@ -19,5 +19,3 @@ function search(state = SEARCH_DEFAULTS, action) {
       return state;
   }
 };
-
-export default search;

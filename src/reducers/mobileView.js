@@ -3,7 +3,7 @@ const MOBILE_VIEW_DEFAULTS = [
   {title: 'Repos', id: 2, selected: false},
 ];
 
-function mobileView(state = MOBILE_VIEW_DEFAULTS, action) {
+export default function mobileView(state = MOBILE_VIEW_DEFAULTS, action) {
   switch(action.type) {
     case 'SWITCH_VIEW':
       return state.map((view) => (view.id === action.payload) ? {...view, selected: true} : {...view, selected: false});
@@ -11,5 +11,3 @@ function mobileView(state = MOBILE_VIEW_DEFAULTS, action) {
       return state;
   }
 }
-
-export default mobileView;

@@ -5,6 +5,12 @@ import classNames from 'classnames';
 import Select from '../../components/select/Select';
 import './Panel.css';
 
+function mapStateToProps(state) {
+  return {
+    selectOptions: state.selectOptions,
+  };
+}
+
 class Panel extends Component {
   render() {
     let selectValue = this.props.selectValue ? this.props.selectValue : this.props.selectOptions[0];
@@ -29,12 +35,6 @@ class Panel extends Component {
       </div>
     );
   }
-}
-
-function mapStateToProps(state) {
-  return {
-    selectOptions: state.selectOptions,
-  };
 }
 
 Panel.propTypes = {

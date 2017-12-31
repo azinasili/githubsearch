@@ -5,7 +5,7 @@ const USERS_DEFAULT = {
   error: null,
 };
 
-function users(state = USERS_DEFAULT, action) {
+export default function users(state = USERS_DEFAULT, action) {
   switch (action.type) {
     case 'RESOLVED_GET_USERS':
       return {
@@ -25,5 +25,3 @@ function users(state = USERS_DEFAULT, action) {
       return state;
   }
 };
-
-export default users;

@@ -6,7 +6,7 @@ import searchResultLength from './searchResultLength';
 import defaultMessage from './defaultMessage';
 import mobileView from './mobileView';
 
-const reducers = {
+export default {
   selectOptions,
   users,
   repos,
@@ -15,5 +15,3 @@ const reducers = {
   defaultMessage,
   mobileView,
 };
-
-export default reducers;

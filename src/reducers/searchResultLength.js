@@ -5,7 +5,7 @@ const RESULT_LENGTH_DEFAULT = {
   repos: selectOptions()[0],
 }
 
-function searchResultLength(state = RESULT_LENGTH_DEFAULT, action) {
+export default function searchResultLength(state = RESULT_LENGTH_DEFAULT, action) {
   switch (action.type) {
     case 'USER_LENGTH':
       return {
@@ -21,5 +21,3 @@ function searchResultLength(state = RESULT_LENGTH_DEFAULT, action) {
       return state;
   }
 };
-
-export default searchResultLength;
