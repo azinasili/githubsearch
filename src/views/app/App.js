@@ -7,7 +7,7 @@ import Panel from '../../containers/panel/Panel';
 import Users from '../../components/users/Users';
 import Repos from '../../components/repos/Repos';
 import Message from '../../components/message/Message';
-import './index.css';
+import './App.css';
 
 function mapStateToProps(state) {
   return {
