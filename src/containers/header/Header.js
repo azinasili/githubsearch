@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { getSearchValue, getSearchString } from '../../actions/getSearch';
 import getUsers from '../../actions/getUsers';
@@ -13,37 +13,29 @@ function mapStateToProps(state) {
   };
 }
 
-class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.searchResults = this.searchResults.bind(this);
-    this.updateSearch = this.updateSearch.bind(this);
-  }
-
-  searchResults(event) {
+function Header(props) {
+  const searchResults = (event) => {
     event.preventDefault();
 
-    const SEARCH_STRING = this.props.searchString;
+    const SEARCH_STRING = props.searchString;
 
-    this.props.dispatch(getUsers(SEARCH_STRING));
-    this.props.dispatch(getRepos(SEARCH_STRING));
+    props.dispatch(getUsers(SEARCH_STRING));
+    props.dispatch(getRepos(SEARCH_STRING));
   }
 
-  updateSearch(string) {
-    this.props.dispatch(getSearchValue(string));
-    this.props.dispatch(getSearchString(string));
+  const updateSearch = (string) => {
+    props.dispatch(getSearchValue(string));
+    props.dispatch(getSearchString(string));
   }
 
-  render() {
-    return (
-      <header className="Header">
-        <Search
-          searchValue={this.props.searchValue}
-          updateSearch={this.updateSearch}
-          searchResults={this.searchResults} />
-      </header>
-    );
-  }
+  return (
+    <header className="Header">
+      <Search
+        searchValue={props.searchValue}
+        updateSearch={updateSearch}
+        searchResults={searchResults} />
+    </header>
+  );
 }
 
 export default connect(mapStateToProps)(Header);
