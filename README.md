@@ -1,4 +1,4 @@
-# GitHub Search
+# GitHub Search [![Build Status](https://travis-ci.org/azinasili/githubsearch.svg?branch=master)](https://travis-ci.org/azinasili/githubsearch)
 [LIVE DEMO](https://azinasili.github.io/githubsearch) | [ALT LINK](http://githubsearch.surge.sh/)
 
 GitHub Search is a simple app built with React. This project is currently a work-in-progess.
