@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import switchView from '../../actions/switchMobileView';
 import Nav from '../../components/navigation/Navigation';
@@ -10,25 +10,18 @@ function mapStateToProps(state) {
   };
 }
 
-class Footer extends Component {
-  constructor(props) {
-    super(props);
-    this.switchView = this.switchView.bind(this);
+function Footer(props) {
+  const viewSwitcher = (id) => {
+    props.dispatch(switchView(id));
   }
 
-  switchView(id) {
-    this.props.dispatch(switchView(id));
-  }
-
-  render() {
-    return (
-      <footer className="Footer">
-        <Nav
-          links={this.props.mobileView}
-          switchView={this.switchView}/>
-      </footer>
-    );
-  }
+  return (
+    <footer className="Footer">
+      <Nav
+        links={props.mobileView}
+        switchView={viewSwitcher}/>
+    </footer>
+  );
 }
 
 export default connect(mapStateToProps)(Footer);
