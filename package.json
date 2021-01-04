@@ -14,7 +14,7 @@
     "predeploy": "npm run build"
   },
   "dependencies": {
-    "axios": "^0.16.2",
+    "axios": "^0.21.1",
     "classnames": "^2.2.5",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
